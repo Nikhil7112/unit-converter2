@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+  <title>Unit Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .converter {
+      max-width: 300px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: mediumaquamarine;
+      border-radius: 5px;
+    }
+
+    .converter input[type="number"] {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+
+    .converter select {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+
+    .converter button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: navy;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    h2{
+        color: whitesmoke;
+    }
+  </style>
+</head>
+<body>
+  <div class="converter">
+    <h2>Unit Converter</h2>
+    <input type="number" id="inputValue" placeholder="Enter a value">
+    <select id="fromUnit">
+      <option value="meter">Meter</option>
+      <option value="kilometer">Kilometer</option>
+      <option value="centimeter">Centimeter</option>
+      <option value="inch">Inch</option>
+    </select>
+    <select id="toUnit">
+      <option value="meter">Meter</option>
+      <option value="kilometer">Kilometer</option>
+      <option value="centimeter">Centimeter</option>
+      <option value="inch">Inch</option>
+    </select>
+    <button onclick="convert()">Convert</button>
+    <h3 id="result"></h3>
+  </div>
+
+  <script>
+    function convert() {
+      const inputValue = document.getElementById("inputValue").value;
+      const fromUnit = document.getElementById("fromUnit").value;
+      const toUnit = document.getElementById("toUnit").value;
+
+      
+      let result;
+      if (fromUnit === "meter" && toUnit === "kilometer") {
+        result = inputValue / 1000;
+      } else if (fromUnit === "meter" && toUnit === "centimeter") {
+        result = inputValue * 100;
+      } else if (fromUnit === "meter" && toUnit === "inch") {
+        result = inputValue * 39.37;
+      } else if (fromUnit === "kilometer" && toUnit === "meter") {
+        result = inputValue * 1000;
+      } else if (fromUnit === "kilometer" && toUnit === "centimeter") {
+        result = inputValue * 100000;
+      } else if (fromUnit === "kilometer" && toUnit === "inch") {
+        result = inputValue * 39370.1;
+      } else if (fromUnit === "centimeter" && toUnit === "meter") {
+        result = inputValue / 100;
+      } else if (fromUnit === "centimeter" && toUnit === "kilometer") {
+        result = inputValue / 100000;
+      } else if (fromUnit === "centimeter" && toUnit === "inch") {
+        result = inputValue / 2.54;
+      } else if (fromUnit === "inch" && toUnit === "meter") {
+        result = inputValue / 39.37;
+      } else if (fromUnit === "inch" && toUnit === "kilometer") {
+        result = inputValue / 39370.1;
+      } else if (fromUnit === "inch" && toUnit === "centimeter") {
+        result = inputValue * 2.54;
+      } else {
+        result = inputValue; 
+      }
+
+      document.getElementById("result").textContent = result.toFixed(2);
+    }
+  </script>
+</body>
+</html>
